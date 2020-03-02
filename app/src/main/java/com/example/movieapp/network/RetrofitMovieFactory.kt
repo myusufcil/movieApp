@@ -10,6 +10,7 @@ import retrofit2.create
 Created by Muhammed Yusuf ÇİL 
 Date : 2/18/2020
 */
+//asd
 class RetrofitMovieFactory {
     companion object{
         var BASE_URL="https://api.themoviedb.org/3/"
