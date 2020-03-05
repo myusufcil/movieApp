@@ -14,5 +14,5 @@ data class Results(
     var title: String,
     var vote_average:String,
     var name:String,//tv
-    var id:String
+    var id:Int
 )

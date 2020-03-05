@@ -100,7 +100,8 @@ class HomeFragment : Fragment() {
                     it.results.forEach {
                         var nowplayingObject = HomeFragmentNowPlayingMovieListDTO(
                             it.poster_path,
-                            it.title
+                            it.title,
+                            it.id
                         )
                         nowPlayingList.add(nowplayingObject)
                     }
