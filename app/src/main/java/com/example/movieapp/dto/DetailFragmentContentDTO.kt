@@ -13,7 +13,7 @@ data class DetailFragmentContentDTO(
     var title:String,
     var overview:String,
     var vote_average:Float,
-    var name:List<Genres>
+    var name:String
 ):BaseModel {
     override val type: Int
         get() = BaseModel.TYPE_ITEM_FRAGMENT_DETAIL_CONTENT

@@ -22,7 +22,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class HomeFragment : Fragment() {
 
     //TopRated Adapter and recyclerview
@@ -80,7 +79,8 @@ class HomeFragment : Fragment() {
                 response.body()?.let {
                     it.results.forEach {
                         var topRatedListObject = HomeFragmentTopRatedListMovieDTO(
-                            it.backdrop_path
+                            it.backdrop_path,
+                            it.id
                         )
                         topRatedList.add(topRatedListObject)
                     }

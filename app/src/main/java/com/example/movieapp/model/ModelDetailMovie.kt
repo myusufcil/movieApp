@@ -10,9 +10,8 @@ data class ModelDetailMovie(
     var title:String,
     var overview:String,
     var vote_average:Float,
-    var genres:List<Genres>
+    var genres:Genres
 )
-
 data class Genres(
     var name:String
 )

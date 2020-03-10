@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
+import com.example.movieapp.dto.DetailFragmentContentDTO
 import com.example.movieapp.viewholder.*
 import com.example.movieclone.model.BaseModel
 import java.lang.IllegalArgumentException
@@ -20,7 +21,7 @@ class AppRecyclerViewAdapter(
         var layoutInflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
-            BaseModel.TYPE_ITEM_FRAGMENT_HOME_MOVIE_TOP_RATED_LIST ->
+            BaseModel.TYPE_ITEM_FRAGMENT_HOME_MOVIE_TOP_RATED_LIST ->{
                 HomeTopRatedViewHolder(
                     layoutInflater.inflate(
                         R.layout.item_fragment_home_top_rated_slider,
@@ -28,6 +29,7 @@ class AppRecyclerViewAdapter(
                         false
                     )
                 )
+            }
             BaseModel.TYPE_ITEM_FRAGMENT_HOME_MOVIE_NOW_PLAYING->
                 HomeNowPlayingViewHolder(
                     layoutInflater.inflate(
@@ -60,6 +62,14 @@ class AppRecyclerViewAdapter(
                         false
                     )
                 )
+            BaseModel.TYPE_ITEM_FRAGMENT_DETAIL_CONTENT->
+                FragmentMovieDetailViewHolder(
+                    layoutInflater.inflate(
+                        R.layout.item_frament_movie_detail,
+                        parent,
+                        false
+                    )
+                )
 
             else ->
                 throw IllegalArgumentException("Invalid view type")
@@ -81,6 +91,8 @@ class AppRecyclerViewAdapter(
                 (holder as TelevisionTopRatedViewHolder).bindView(items[position],position,recyclerViewClickListener)
             BaseModel.TYPE_ITEM_FRAGMENT_TELEVISION_POPULAR_SERIESLIST->
                 (holder as TelevisionPopularViewHolder).bindView(items[position],position,recyclerViewClickListener)
+            BaseModel.TYPE_ITEM_FRAGMENT_DETAIL_CONTENT->
+                (holder as FragmentMovieDetailViewHolder).bindView(items[position],position,recyclerViewClickListener)
         }
     }
     override fun getItemViewType(position: Int): Int { //  !!!Burayı sor!!!
