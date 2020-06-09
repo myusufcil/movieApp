@@ -1,6 +1,7 @@
 package com.example.movieclone.network
 
 import com.example.movieapp.model.ModelDetailMovie
+import com.example.movieclone.constant.AppConstants
 import com.example.movieclone.model.ModelMovie
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -26,5 +27,5 @@ interface ApiService{
     fun getTelevisionPopularSeries():retrofit2.Call<ModelMovie>
 
     @GET("movie/{movie_id}?api_key=348de44a7486f8a17da47d853ea193f7")
-    fun getMovieAccordingToId(@Query("\$movie_id")id:Int ):retrofit2.Call<ModelDetailMovie>
+    fun getMovieAccordingToId(@Query("api_key")api_key : String=AppConstants.apiKey):retrofit2.Call<ModelDetailMovie>
 }

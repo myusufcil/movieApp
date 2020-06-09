@@ -73,7 +73,6 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call<ModelMovie>, t: Throwable) {
                 Log.d("Başarısız", "başarısız")
             }
-
             override fun onResponse(call: Call<ModelMovie>, response: Response<ModelMovie>) {
                 Log.d("Başarılı", "başarılı")
                 response.body()?.let {
@@ -88,6 +87,8 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+
         val apiServiceNowPlaying = RetrofitMovieFactory.createMovie().getNowPlayingMovieListToHomeFragment()
         apiServiceNowPlaying.enqueue(object : Callback<ModelMovie> {
             override fun onFailure(call: Call<ModelMovie>, t: Throwable) {
@@ -97,7 +98,7 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<ModelMovie>, response: Response<ModelMovie>) {
                 Log.d("Başarılı", "Başarılı")
                 response.body()?.let {
-                    it.results.forEach {
+                    it.results.map {
                         var nowplayingObject = HomeFragmentNowPlayingMovieListDTO(
                             it.poster_path,
                             it.title,
@@ -109,6 +110,8 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+
         val apiServicePopularMovies = RetrofitMovieFactory.createMovie().getPopularMovieListToHomeFragment()
         apiServicePopularMovies.enqueue(object : Callback<ModelMovie> {
             override fun onFailure(call: Call<ModelMovie>, t: Throwable) {
@@ -130,6 +133,8 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+
     }
 
     private fun getRecyclerViewAdapter() {

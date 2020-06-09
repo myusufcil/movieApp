@@ -20,10 +20,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class DetailFragment : Fragment() {
 
     lateinit var recyclerAdapterDetailMovie: AppRecyclerViewAdapter
@@ -74,8 +70,9 @@ class DetailFragment : Fragment() {
             }
         }
 
+        Log.d("gelenDeger",MovieId.toString())
         var getMovieAccordingToId =
-            RetrofitMovieFactory.createMovie().getMovieAccordingToId(MovieId)
+            RetrofitMovieFactory.createMovie().getMovieAccordingToId(MovieId.toString())
 
         getMovieAccordingToId.enqueue(object : Callback<ModelDetailMovie> {
             override fun onFailure(call: Call<ModelDetailMovie>, t: Throwable) {
